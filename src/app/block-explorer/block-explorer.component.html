@@ -1,0 +1,21 @@
+<main>
+  <div *ngFor="let block of blocks; let first = first" class="block scene">
+    <div
+      class="cube"
+      [ngClass]="{
+        animate: first
+      }"
+    >
+      <div class="cube__face cube__face--front">{{ block.index }}</div>
+      <div class="cube__face cube__face--back">
+        <p>time: {{ block.timestamp }}</p>
+        <p>hash: {{ block.hash }}</p>
+        <p>message: {{ block.message }}</p>
+      </div>
+      <div class="cube__face cube__face--right"></div>
+      <div class="cube__face cube__face--left"></div>
+      <div class="cube__face cube__face--top"></div>
+      <div class="cube__face cube__face--bottom"></div>
+    </div>
+  </div>
+</main>

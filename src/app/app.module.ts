@@ -1,16 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { BlockExplorerComponent } from './block-explorer/block-explorer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    BlockExplorerComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [BlockExplorerComponent],
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) {
+
+  }
+  ngDoBootstrap() {
+    const blockExplorerElement = createCustomElement(BlockExplorerComponent, {injector: this.injector});
+    customElements.define('block-explorer', blockExplorerElement);
+  }
+ }

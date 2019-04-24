@@ -1,0 +1,65 @@
+.scene {
+  width: 200px;
+  height: 200px;
+  margin: 30px auto 10px;
+  perspective: 1500px;
+}
+
+.cube {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  transform-style: preserve-3d;
+
+  &.show-back {
+    transform: translateZ(-100px) rotateY(-180deg);
+  }
+
+  &__face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgb(15, 5, 68);
+    line-height: 200px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background: rgba(149, 177, 214, 0.7);
+
+    &--front {
+      transform: rotateY(  0deg) translateZ(100px);
+    }
+
+    &--right {
+      transform: rotateY( 90deg) translateZ(100px);
+    }
+
+    &--back {
+      transform: rotateY(180deg) translateZ(100px);
+    }
+
+    &--left {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    &--top {
+      transform: rotateX( 90deg) translateZ(100px);
+    }
+
+    &--bottom {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+  }
+
+  &:not(.animate):hover {
+    transition: all 500ms;
+    transform: translateZ(-100px) rotateY(-180deg) !important;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
